@@ -1,11 +1,16 @@
+sudo: false
 language: python
 python:
  - "2.7"
  - "3.4"
+ - "3.5"
 env:
- - DJANGO="django==1.6.7"
- - DJANGO="django==1.7"
+  global:
+    - DRF="djangorestframework==3.3.3"
+  matrix:
+    - DJANGO="django==1.8.13"
+    - DJANGO="django==1.9.6"
 install:
- - pip install $DJANGO
+ - pip install $DJANGO $DRF
 script:
  - python setup.py test
